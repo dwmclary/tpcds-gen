@@ -46,7 +46,7 @@ LOCATION '/user/oracle/tpc_ds/dbgen_version';
 
 create external table if not exists customer_address
 (
-    ca_address_sk             integer               ,
+    ca_address_sk             int               ,
     ca_address_id             string              ,
     ca_street_number          string                      ,
     ca_street_name            string                   ,
@@ -67,15 +67,15 @@ LOCATION '/user/oracle/tpc_ds/customer_address';
 
 create external table if not exists customer_demographics
 (
-    cd_demo_sk                integer               ,
+    cd_demo_sk                int               ,
     cd_gender                 string                       ,
     cd_marital_status         string                       ,
     cd_education_status       string                      ,
-    cd_purchase_estimate      integer                       ,
+    cd_purchase_estimate      int                       ,
     cd_credit_rating          string                      ,
-    cd_dep_count              integer                       ,
-    cd_dep_employed_count     integer                       ,
-    cd_dep_college_count      integer                       
+    cd_dep_count              int                       ,
+    cd_dep_employed_count     int                       ,
+    cd_dep_college_count      int                       
     
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -84,29 +84,29 @@ LOCATION '/user/oracle/tpc_ds/customer_demographics';
 
 create external table if not exists date_dim
 (
-    d_date_sk                 integer               ,
+    d_date_sk                 int               ,
     d_date_id                 string              ,
     d_date                    date                          ,
-    d_month_seq               integer                       ,
-    d_week_seq                integer                       ,
-    d_quarter_seq             integer                       ,
-    d_year                    integer                       ,
-    d_dow                     integer                       ,
-    d_moy                     integer                       ,
-    d_dom                     integer                       ,
-    d_qoy                     integer                       ,
-    d_fy_year                 integer                       ,
-    d_fy_quarter_seq          integer                       ,
-    d_fy_week_seq             integer                       ,
+    d_month_seq               int                       ,
+    d_week_seq                int                       ,
+    d_quarter_seq             int                       ,
+    d_year                    int                       ,
+    d_dow                     int                       ,
+    d_moy                     int                       ,
+    d_dom                     int                       ,
+    d_qoy                     int                       ,
+    d_fy_year                 int                       ,
+    d_fy_quarter_seq          int                       ,
+    d_fy_week_seq             int                       ,
     d_day_name                string                       ,
     d_quarter_name            string                       ,
     d_holiday                 string                       ,
     d_weekend                 string                       ,
     d_following_holiday       string                       ,
-    d_first_dom               integer                       ,
-    d_last_dom                integer                       ,
-    d_same_day_ly             integer                       ,
-    d_same_day_lq             integer                       ,
+    d_first_dom               int                       ,
+    d_last_dom                int                       ,
+    d_same_day_ly             int                       ,
+    d_same_day_lq             int                       ,
     d_current_day             string                       ,
     d_current_week            string                       ,
     d_current_month           string                       ,
@@ -120,10 +120,10 @@ LOCATION '/user/oracle/tpc_ds/date_dim';
 
 create external table if not exists warehouse
 (
-    w_warehouse_sk            integer               ,
+    w_warehouse_sk            int               ,
     w_warehouse_id            string              ,
     w_warehouse_name          string                   ,
-    w_warehouse_sq_ft         integer                       ,
+    w_warehouse_sq_ft         int                       ,
     w_street_number           string                      ,
     w_street_name             string                   ,
     w_street_type             string                      ,
@@ -142,7 +142,7 @@ LOCATION '/user/oracle/tpc_ds/warehouse';
 
 create external table if not exists ship_mode
 (
-    sm_ship_mode_sk           integer               ,
+    sm_ship_mode_sk           int               ,
     sm_ship_mode_id           string              ,
     sm_type                   string                      ,
     sm_code                   string                      ,
@@ -156,12 +156,12 @@ LOCATION '/user/oracle/tpc_ds/ship_mode';
 
 create external table if not exists time_dim
 (
-    t_time_sk                 integer               ,
+    t_time_sk                 int               ,
     t_time_id                 string              ,
-    t_time                    integer                       ,
-    t_hour                    integer                       ,
-    t_minute                  integer                       ,
-    t_second                  integer                       ,
+    t_time                    int                       ,
+    t_hour                    int                       ,
+    t_minute                  int                       ,
+    t_second                  int                       ,
     t_am_pm                   string                       ,
     t_shift                   string                      ,
     t_sub_shift               string                      ,
@@ -174,7 +174,7 @@ LOCATION '/user/oracle/tpc_ds/time_dim';
 
 create external table if not exists reason
 (
-    r_reason_sk               integer               ,
+    r_reason_sk               int               ,
     r_reason_id               string              ,
     r_reason_desc             string                     
     
@@ -185,9 +185,9 @@ LOCATION '/user/oracle/tpc_ds/dbgen_version';
 
 create external table if not exists income_band
 (
-    ib_income_band_sk         integer               ,
-    ib_lower_bound            integer                       ,
-    ib_upper_bound            integer                       
+    ib_income_band_sk         int               ,
+    ib_lower_bound            int                       ,
+    ib_upper_bound            int                       
     
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -196,27 +196,27 @@ LOCATION '/user/oracle/tpc_ds/income_band';
 
 create external table if not exists item
 (
-    i_item_sk                 integer               ,
+    i_item_sk                 int               ,
     i_item_id                 string              ,
     i_rec_start_date          date                          ,
     i_rec_end_date            date                          ,
     i_item_desc               string                  ,
     i_current_price           float                  ,
     i_wholesale_cost          float                  ,
-    i_brand_id                integer                       ,
+    i_brand_id                int                       ,
     i_brand                   string                      ,
-    i_class_id                integer                       ,
+    i_class_id                int                       ,
     i_class                   string                      ,
-    i_category_id             integer                       ,
+    i_category_id             int                       ,
     i_category                string                      ,
-    i_manufact_id             integer                       ,
+    i_manufact_id             int                       ,
     i_manufact                string                      ,
     i_size                    string                      ,
     i_formulation             string                      ,
     i_color                   string                      ,
     i_units                   string                      ,
     i_container               string                      ,
-    i_manager_id              integer                       ,
+    i_manager_id              int                       ,
     i_product_name            string                      
     
 ) ROW FORMAT DELIMITED
@@ -226,23 +226,23 @@ LOCATION '/user/oracle/tpc_ds/item';
 
 create external table if not exists store
 (
-    s_store_sk                integer               ,
+    s_store_sk                int               ,
     s_store_id                string              ,
     s_rec_start_date          date                          ,
     s_rec_end_date            date                          ,
-    s_closed_date_sk          integer                       ,
+    s_closed_date_sk          int                       ,
     s_store_name              string                   ,
-    s_number_employees        integer                       ,
-    s_floor_space             integer                       ,
+    s_number_employees        int                       ,
+    s_floor_space             int                       ,
     s_hours                   string                      ,
     s_manager                 string                   ,
-    s_market_id               integer                       ,
+    s_market_id               int                       ,
     s_geography_class         string                  ,
     s_market_desc             string                  ,
     s_market_manager          string                   ,
-    s_division_id             integer                       ,
+    s_division_id             int                       ,
     s_division_name           string                   ,
-    s_company_id              integer                       ,
+    s_company_id              int                       ,
     s_company_name            string                   ,
     s_street_number           string                   ,
     s_street_name             string                   ,
@@ -263,25 +263,25 @@ LOCATION '/user/oracle/tpc_ds/store';
 
 create external table if not exists call_center
 (
-    cc_call_center_sk         integer               ,
+    cc_call_center_sk         int               ,
     cc_call_center_id         string              ,
     cc_rec_start_date         date                          ,
     cc_rec_end_date           date                          ,
-    cc_closed_date_sk         integer                       ,
-    cc_open_date_sk           integer                       ,
+    cc_closed_date_sk         int                       ,
+    cc_open_date_sk           int                       ,
     cc_name                   string                   ,
     cc_class                  string                   ,
-    cc_employees              integer                       ,
-    cc_sq_ft                  integer                       ,
+    cc_employees              int                       ,
+    cc_sq_ft                  int                       ,
     cc_hours                  string                      ,
     cc_manager                string                   ,
-    cc_mkt_id                 integer                       ,
+    cc_mkt_id                 int                       ,
     cc_mkt_class              string                      ,
     cc_mkt_desc               string                  ,
     cc_market_manager         string                   ,
-    cc_division               integer                       ,
+    cc_division               int                       ,
     cc_division_name          string                   ,
-    cc_company                integer                       ,
+    cc_company                int                       ,
     cc_company_name           string                      ,
     cc_street_number          string                      ,
     cc_street_name            string                   ,
@@ -302,20 +302,20 @@ LOCATION '/user/oracle/tpc_ds/call_center';
 
 create external table if not exists customer
 (
-    c_customer_sk             integer               ,
+    c_customer_sk             int               ,
     c_customer_id             string              ,
-    c_current_cdemo_sk        integer                       ,
-    c_current_hdemo_sk        integer                       ,
-    c_current_addr_sk         integer                       ,
-    c_first_shipto_date_sk    integer                       ,
-    c_first_sales_date_sk     integer                       ,
+    c_current_cdemo_sk        int                       ,
+    c_current_hdemo_sk        int                       ,
+    c_current_addr_sk         int                       ,
+    c_first_shipto_date_sk    int                       ,
+    c_first_sales_date_sk     int                       ,
     c_salutation              string                      ,
     c_first_name              string                      ,
     c_last_name               string                      ,
     c_preferred_cust_flag     string                       ,
-    c_birth_day               integer                       ,
-    c_birth_month             integer                       ,
-    c_birth_year              integer                       ,
+    c_birth_day               int                       ,
+    c_birth_month             int                       ,
+    c_birth_year              int                       ,
     c_birth_country           string                   ,
     c_login                   string                      ,
     c_email_address           string                      ,
@@ -328,20 +328,20 @@ LOCATION '/user/oracle/tpc_ds/customer';
 
 create external table if not exists web_site
 (
-    web_site_sk               integer               ,
+    web_site_sk               int               ,
     web_site_id               string              ,
     web_rec_start_date        date                          ,
     web_rec_end_date          date                          ,
     web_name                  string                   ,
-    web_open_date_sk          integer                       ,
-    web_close_date_sk         integer                       ,
+    web_open_date_sk          int                       ,
+    web_close_date_sk         int                       ,
     web_class                 string                   ,
     web_manager               string                   ,
-    web_mkt_id                integer                       ,
+    web_mkt_id                int                       ,
     web_mkt_class             string                   ,
     web_mkt_desc              string                  ,
     web_market_manager        string                   ,
-    web_company_id            integer                       ,
+    web_company_id            int                       ,
     web_company_name          string                      ,
     web_street_number         string                      ,
     web_street_name           string                   ,
@@ -362,17 +362,17 @@ LOCATION '/user/oracle/tpc_ds/web_site';
 
 create external table if not exists store_returns
 (
-    sr_returned_date_sk       integer                       ,
-    sr_return_time_sk         integer                       ,
-    sr_item_sk                integer               ,
-    sr_customer_sk            integer                       ,
-    sr_cdemo_sk               integer                       ,
-    sr_hdemo_sk               integer                       ,
-    sr_addr_sk                integer                       ,
-    sr_store_sk               integer                       ,
-    sr_reason_sk              integer                       ,
-    sr_ticket_number          integer               ,
-    sr_return_quantity        integer                       ,
+    sr_returned_date_sk       int                       ,
+    sr_return_time_sk         int                       ,
+    sr_item_sk                int               ,
+    sr_customer_sk            int                       ,
+    sr_cdemo_sk               int                       ,
+    sr_hdemo_sk               int                       ,
+    sr_addr_sk                int                       ,
+    sr_store_sk               int                       ,
+    sr_reason_sk              int                       ,
+    sr_ticket_number          int               ,
+    sr_return_quantity        int                       ,
     sr_return_amt             float                  ,
     sr_return_tax             float                  ,
     sr_return_amt_inc_tax     float                  ,
@@ -390,11 +390,11 @@ LOCATION '/user/oracle/tpc_ds/store_returns';
 
 create external table if not exists household_demographics
 (
-    hd_demo_sk                integer               ,
-    hd_income_band_sk         integer                       ,
+    hd_demo_sk                int               ,
+    hd_income_band_sk         int                       ,
     hd_buy_potential          string                      ,
-    hd_dep_count              integer                       ,
-    hd_vehicle_count          integer                       
+    hd_dep_count              int                       ,
+    hd_vehicle_count          int                       
     
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -403,20 +403,20 @@ LOCATION '/user/oracle/tpc_ds/household_demographics';
 
 create external table if not exists web_page
 (
-    wp_web_page_sk            integer               ,
+    wp_web_page_sk            int               ,
     wp_web_page_id            string              ,
     wp_rec_start_date         date                          ,
     wp_rec_end_date           date                          ,
-    wp_creation_date_sk       integer                       ,
-    wp_access_date_sk         integer                       ,
+    wp_creation_date_sk       int                       ,
+    wp_access_date_sk         int                       ,
     wp_autogen_flag           string                       ,
-    wp_customer_sk            integer                       ,
+    wp_customer_sk            int                       ,
     wp_url                    string                  ,
     wp_type                   string                      ,
-    wp_char_count             integer                       ,
-    wp_link_count             integer                       ,
-    wp_image_count            integer                       ,
-    wp_max_ad_count           integer                       
+    wp_char_count             int                       ,
+    wp_link_count             int                       ,
+    wp_image_count            int                       ,
+    wp_max_ad_count           int                       
     
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -425,13 +425,13 @@ LOCATION '/user/oracle/tpc_ds/web_page';
 
 create external table if not exists promotion
 (
-    p_promo_sk                integer               ,
+    p_promo_sk                int               ,
     p_promo_id                string              ,
-    p_start_date_sk           integer                       ,
-    p_end_date_sk             integer                       ,
-    p_item_sk                 integer                       ,
+    p_start_date_sk           int                       ,
+    p_end_date_sk             int                       ,
+    p_item_sk                 int                       ,
     p_cost                    float                 ,
-    p_response_target         integer                       ,
+    p_response_target         int                       ,
     p_promo_name              string                      ,
     p_channel_dmail           string                       ,
     p_channel_email           string                       ,
@@ -452,13 +452,13 @@ LOCATION '/user/oracle/tpc_ds/promotion';
 
 create external table if not exists catalog_page
 (
-    cp_catalog_page_sk        integer               ,
+    cp_catalog_page_sk        int               ,
     cp_catalog_page_id        string              ,
-    cp_start_date_sk          integer                       ,
-    cp_end_date_sk            integer                       ,
+    cp_start_date_sk          int                       ,
+    cp_end_date_sk            int                       ,
     cp_department             string                   ,
-    cp_catalog_number         integer                       ,
-    cp_catalog_page_number    integer                       ,
+    cp_catalog_number         int                       ,
+    cp_catalog_page_number    int                       ,
     cp_description            string                  ,
     cp_type                   string                  
     
@@ -469,10 +469,10 @@ LOCATION '/user/oracle/tpc_ds/catalog_page';
 
 create external table if not exists inventory
 (
-    inv_date_sk               integer               ,
-    inv_item_sk               integer               ,
-    inv_warehouse_sk          integer               ,
-    inv_quantity_on_hand      integer                       
+    inv_date_sk               int               ,
+    inv_item_sk               int               ,
+    inv_warehouse_sk          int               ,
+    inv_quantity_on_hand      int                       
     
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -481,24 +481,24 @@ LOCATION '/user/oracle/tpc_ds/inventory';
 
 create external table if not exists catalog_returns
 (
-    cr_returned_date_sk       integer                       ,
-    cr_returned_time_sk       integer                       ,
-    cr_item_sk                integer               ,
-    cr_refunded_customer_sk   integer                       ,
-    cr_refunded_cdemo_sk      integer                       ,
-    cr_refunded_hdemo_sk      integer                       ,
-    cr_refunded_addr_sk       integer                       ,
-    cr_returning_customer_sk  integer                       ,
-    cr_returning_cdemo_sk     integer                       ,
-    cr_returning_hdemo_sk     integer                       ,
-    cr_returning_addr_sk      integer                       ,
-    cr_call_center_sk         integer                       ,
-    cr_catalog_page_sk        integer                       ,
-    cr_ship_mode_sk           integer                       ,
-    cr_warehouse_sk           integer                       ,
-    cr_reason_sk              integer                       ,
-    cr_order_number           integer               ,
-    cr_return_quantity        integer                       ,
+    cr_returned_date_sk       int                       ,
+    cr_returned_time_sk       int                       ,
+    cr_item_sk                int               ,
+    cr_refunded_customer_sk   int                       ,
+    cr_refunded_cdemo_sk      int                       ,
+    cr_refunded_hdemo_sk      int                       ,
+    cr_refunded_addr_sk       int                       ,
+    cr_returning_customer_sk  int                       ,
+    cr_returning_cdemo_sk     int                       ,
+    cr_returning_hdemo_sk     int                       ,
+    cr_returning_addr_sk      int                       ,
+    cr_call_center_sk         int                       ,
+    cr_catalog_page_sk        int                       ,
+    cr_ship_mode_sk           int                       ,
+    cr_warehouse_sk           int                       ,
+    cr_reason_sk              int                       ,
+    cr_order_number           int               ,
+    cr_return_quantity        int                       ,
     cr_return_amount          float                  ,
     cr_return_tax             float                  ,
     cr_return_amt_inc_tax     float                  ,
@@ -516,21 +516,21 @@ LOCATION '/user/oracle/tpc_ds/catalog_returns';
 
 create external table if not exists web_returns
 (
-    wr_returned_date_sk       integer                       ,
-    wr_returned_time_sk       integer                       ,
-    wr_item_sk                integer               ,
-    wr_refunded_customer_sk   integer                       ,
-    wr_refunded_cdemo_sk      integer                       ,
-    wr_refunded_hdemo_sk      integer                       ,
-    wr_refunded_addr_sk       integer                       ,
-    wr_returning_customer_sk  integer                       ,
-    wr_returning_cdemo_sk     integer                       ,
-    wr_returning_hdemo_sk     integer                       ,
-    wr_returning_addr_sk      integer                       ,
-    wr_web_page_sk            integer                       ,
-    wr_reason_sk              integer                       ,
-    wr_order_number           integer               ,
-    wr_return_quantity        integer                       ,
+    wr_returned_date_sk       int                       ,
+    wr_returned_time_sk       int                       ,
+    wr_item_sk                int               ,
+    wr_refunded_customer_sk   int                       ,
+    wr_refunded_cdemo_sk      int                       ,
+    wr_refunded_hdemo_sk      int                       ,
+    wr_refunded_addr_sk       int                       ,
+    wr_returning_customer_sk  int                       ,
+    wr_returning_cdemo_sk     int                       ,
+    wr_returning_hdemo_sk     int                       ,
+    wr_returning_addr_sk      int                       ,
+    wr_web_page_sk            int                       ,
+    wr_reason_sk              int                       ,
+    wr_order_number           int               ,
+    wr_return_quantity        int                       ,
     wr_return_amt             float                  ,
     wr_return_tax             float                  ,
     wr_return_amt_inc_tax     float                  ,
@@ -548,25 +548,25 @@ LOCATION '/user/oracle/tpc_ds/web_returns';
 
 create external table if not exists web_sales
 (
-    ws_sold_date_sk           integer                       ,
-    ws_sold_time_sk           integer                       ,
-    ws_ship_date_sk           integer                       ,
-    ws_item_sk                integer               ,
-    ws_bill_customer_sk       integer                       ,
-    ws_bill_cdemo_sk          integer                       ,
-    ws_bill_hdemo_sk          integer                       ,
-    ws_bill_addr_sk           integer                       ,
-    ws_ship_customer_sk       integer                       ,
-    ws_ship_cdemo_sk          integer                       ,
-    ws_ship_hdemo_sk          integer                       ,
-    ws_ship_addr_sk           integer                       ,
-    ws_web_page_sk            integer                       ,
-    ws_web_site_sk            integer                       ,
-    ws_ship_mode_sk           integer                       ,
-    ws_warehouse_sk           integer                       ,
-    ws_promo_sk               integer                       ,
-    ws_order_number           integer               ,
-    ws_quantity               integer                       ,
+    ws_sold_date_sk           int                       ,
+    ws_sold_time_sk           int                       ,
+    ws_ship_date_sk           int                       ,
+    ws_item_sk                int               ,
+    ws_bill_customer_sk       int                       ,
+    ws_bill_cdemo_sk          int                       ,
+    ws_bill_hdemo_sk          int                       ,
+    ws_bill_addr_sk           int                       ,
+    ws_ship_customer_sk       int                       ,
+    ws_ship_cdemo_sk          int                       ,
+    ws_ship_hdemo_sk          int                       ,
+    ws_ship_addr_sk           int                       ,
+    ws_web_page_sk            int                       ,
+    ws_web_site_sk            int                       ,
+    ws_ship_mode_sk           int                       ,
+    ws_warehouse_sk           int                       ,
+    ws_promo_sk               int                       ,
+    ws_order_number           int               ,
+    ws_quantity               int                       ,
     ws_wholesale_cost         float                  ,
     ws_list_price             float                  ,
     ws_sales_price            float                  ,
@@ -590,25 +590,25 @@ LOCATION '/user/oracle/tpc_ds/web_sales';
 
 create external table if not exists catalog_sales
 (
-    cs_sold_date_sk           integer                       ,
-    cs_sold_time_sk           integer                       ,
-    cs_ship_date_sk           integer                       ,
-    cs_bill_customer_sk       integer                       ,
-    cs_bill_cdemo_sk          integer                       ,
-    cs_bill_hdemo_sk          integer                       ,
-    cs_bill_addr_sk           integer                       ,
-    cs_ship_customer_sk       integer                       ,
-    cs_ship_cdemo_sk          integer                       ,
-    cs_ship_hdemo_sk          integer                       ,
-    cs_ship_addr_sk           integer                       ,
-    cs_call_center_sk         integer                       ,
-    cs_catalog_page_sk        integer                       ,
-    cs_ship_mode_sk           integer                       ,
-    cs_warehouse_sk           integer                       ,
-    cs_item_sk                integer               ,
-    cs_promo_sk               integer                       ,
-    cs_order_number           integer               ,
-    cs_quantity               integer                       ,
+    cs_sold_date_sk           int                       ,
+    cs_sold_time_sk           int                       ,
+    cs_ship_date_sk           int                       ,
+    cs_bill_customer_sk       int                       ,
+    cs_bill_cdemo_sk          int                       ,
+    cs_bill_hdemo_sk          int                       ,
+    cs_bill_addr_sk           int                       ,
+    cs_ship_customer_sk       int                       ,
+    cs_ship_cdemo_sk          int                       ,
+    cs_ship_hdemo_sk          int                       ,
+    cs_ship_addr_sk           int                       ,
+    cs_call_center_sk         int                       ,
+    cs_catalog_page_sk        int                       ,
+    cs_ship_mode_sk           int                       ,
+    cs_warehouse_sk           int                       ,
+    cs_item_sk                int               ,
+    cs_promo_sk               int                       ,
+    cs_order_number           int               ,
+    cs_quantity               int                       ,
     cs_wholesale_cost         float                  ,
     cs_list_price             float                  ,
     cs_sales_price            float                  ,
@@ -632,17 +632,17 @@ LOCATION '/user/oracle/tpc_ds/catalog_sales';
 
 create external table if not exists store_sales
 (
-    ss_sold_date_sk           integer                       ,
-    ss_sold_time_sk           integer                       ,
-    ss_item_sk                integer               ,
-    ss_customer_sk            integer                       ,
-    ss_cdemo_sk               integer                       ,
-    ss_hdemo_sk               integer                       ,
-    ss_addr_sk                integer                       ,
-    ss_store_sk               integer                       ,
-    ss_promo_sk               integer                       ,
-    ss_ticket_number          integer               ,
-    ss_quantity               integer                       ,
+    ss_sold_date_sk           int                       ,
+    ss_sold_time_sk           int                       ,
+    ss_item_sk                int               ,
+    ss_customer_sk            int                       ,
+    ss_cdemo_sk               int                       ,
+    ss_hdemo_sk               int                       ,
+    ss_addr_sk                int                       ,
+    ss_store_sk               int                       ,
+    ss_promo_sk               int                       ,
+    ss_ticket_number          int               ,
+    ss_quantity               int                       ,
     ss_wholesale_cost         float                  ,
     ss_list_price             float                  ,
     ss_sales_price            float                  ,
