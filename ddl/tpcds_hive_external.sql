@@ -42,7 +42,8 @@ create external table if not exists dbgen_version
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/dbgen_version';
+LOCATION '/user/oracle/tpc_ds/dbgen_version';
+
 
 create external table if not exists customer_address
 (
@@ -63,7 +64,8 @@ create external table if not exists customer_address
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/customer_address';
+LOCATION '/user/oracle/tpc_ds/customer_address';
+
 
 create external table if not exists customer_demographics
 (
@@ -80,13 +82,14 @@ create external table if not exists customer_demographics
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/customer_demographics';
+LOCATION '/user/oracle/tpc_ds/customer_demographics';
+
 
 create external table if not exists date_dim
 (
     d_date_sk                 int               ,
     d_date_id                 string              ,
-    d_date                    timestamp                          ,
+    d_date                    string                          ,
     d_month_seq               int                       ,
     d_week_seq                int                       ,
     d_quarter_seq             int                       ,
@@ -116,7 +119,8 @@ create external table if not exists date_dim
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/date_dim';
+LOCATION '/user/oracle/tpc_ds/date_dim';
+
 
 create external table if not exists warehouse
 (
@@ -138,7 +142,8 @@ create external table if not exists warehouse
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/warehouse';
+LOCATION '/user/oracle/tpc_ds/warehouse';
+
 
 create external table if not exists ship_mode
 (
@@ -152,7 +157,7 @@ create external table if not exists ship_mode
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/ship_mode';
+LOCATION '/user/oracle/tpc_ds/ship_mode';
 
 create external table if not exists time_dim
 (
@@ -170,7 +175,8 @@ create external table if not exists time_dim
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/time_dim';
+LOCATION '/user/oracle/tpc_ds/time_dim';
+
 
 create external table if not exists reason
 (
@@ -181,7 +187,8 @@ create external table if not exists reason
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/dbgen_version';
+LOCATION '/user/oracle/tpc_ds/dbgen_version';
+
 
 create external table if not exists income_band
 (
@@ -192,7 +199,7 @@ create external table if not exists income_band
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/income_band';
+LOCATION '/user/oracle/tpc_ds/income_band';
 
 create external table if not exists item
 (
@@ -222,7 +229,8 @@ create external table if not exists item
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/item';
+LOCATION '/user/oracle/tpc_ds/item';
+
 
 create external table if not exists store
 (
@@ -259,7 +267,8 @@ create external table if not exists store
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/store';
+LOCATION '/user/oracle/tpc_ds/store';
+
 
 create external table if not exists call_center
 (
@@ -298,7 +307,8 @@ create external table if not exists call_center
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/call_center';
+LOCATION '/user/oracle/tpc_ds/call_center';
+
 
 create external table if not exists customer
 (
@@ -324,7 +334,8 @@ create external table if not exists customer
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/customer';
+LOCATION '/user/oracle/tpc_ds/customer';
+
 
 create external table if not exists web_site
 (
@@ -358,7 +369,8 @@ create external table if not exists web_site
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/web_site';
+LOCATION '/user/oracle/tpc_ds/web_site';
+
 
 create external table if not exists store_returns
 (
@@ -386,7 +398,7 @@ create external table if not exists store_returns
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/store_returns';
+LOCATION '/user/oracle/tpc_ds/store_returns';
 
 create external table if not exists household_demographics
 (
@@ -399,7 +411,8 @@ create external table if not exists household_demographics
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/household_demographics';
+LOCATION '/user/oracle/tpc_ds/household_demographics';
+
 
 create external table if not exists web_page
 (
@@ -421,7 +434,8 @@ create external table if not exists web_page
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/web_page';
+LOCATION '/user/oracle/tpc_ds/web_page';
+
 
 create external table if not exists promotion
 (
@@ -448,7 +462,8 @@ create external table if not exists promotion
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/promotion';
+LOCATION '/user/oracle/tpc_ds/promotion';
+
 
 create external table if not exists catalog_page
 (
@@ -465,7 +480,8 @@ create external table if not exists catalog_page
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/catalog_page';
+LOCATION '/user/oracle/tpc_ds/catalog_page';
+
 
 create external table if not exists inventory
 (
@@ -477,7 +493,8 @@ create external table if not exists inventory
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/inventory';
+LOCATION '/user/oracle/tpc_ds/inventory';
+
 
 create external table if not exists catalog_returns
 (
@@ -512,7 +529,8 @@ create external table if not exists catalog_returns
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/catalog_returns';
+LOCATION '/user/oracle/tpc_ds/catalog_returns';
+
 
 create external table if not exists web_returns
 (
@@ -544,7 +562,8 @@ create external table if not exists web_returns
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/web_returns';
+LOCATION '/user/oracle/tpc_ds/web_returns';
+
 
 create external table if not exists web_sales
 (
@@ -586,7 +605,8 @@ create external table if not exists web_sales
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/web_sales';
+LOCATION '/user/oracle/tpc_ds/web_sales';
+
 
 create external table if not exists catalog_sales
 (
@@ -628,7 +648,8 @@ create external table if not exists catalog_sales
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/catalog_sales';
+LOCATION '/user/oracle/tpc_ds/catalog_sales';
+
 
 create external table if not exists store_sales
 (
@@ -659,5 +680,6 @@ create external table if not exists store_sales
 ) ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/user/dmcclary/tpc_ds_2G/store_sales';
+LOCATION '/user/oracle/tpc_ds/store_sales';
+
 

@@ -36,7 +36,10 @@
 define YEAR = random(1998,2002, uniform);
 define MONTH = random(11,12,uniform);
 define CATEGORY = text({"Books",1},{"Home",1},{"Electronics",1},{"Jewelry",1},{"Sports",1});
+<<<<<<< HEAD
 define GMT = text({"-6",1},{"-7",1}); -- for qualification -5
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
 define _LIMIT=100;
 
 [_LIMITA] select [_LIMITB] promotions,total,cast(promotions as decimal(15,4))/cast(total as decimal(15,4))*100

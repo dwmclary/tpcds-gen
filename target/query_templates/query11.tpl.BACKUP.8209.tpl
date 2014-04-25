@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+
+with year_total as (
+ select c_customer_id customer_id
+       ,c_first_name customer_first_name
+       ,c_last_name customer_last_name
+       ,c_preferred_cust_flag customer_preferred_cust_flag
+=======
 --
 -- Legal Notice 
 -- 
@@ -40,9 +48,6 @@
  select c_customer_id customer_id
        ,c_first_name customer_first_name
        ,c_last_name customer_last_name
-<<<<<<< HEAD
-       ,c_preferred_cust_flag customer_preferred_cust_flag
-=======
        ,c_preferred_cust_flag
 >>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
        ,c_birth_country customer_birth_country
@@ -94,7 +99,11 @@
          ,c_email_address
          ,d_year
          )
+<<<<<<< HEAD
+ select * from ( select  t_s_secyear.customer_preferred_cust_flag
+=======
  [_LIMITA] select [_LIMITB] [SELECTCONE]
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
  from year_total t_s_firstyear
      ,year_total t_s_secyear
      ,year_total t_w_firstyear
@@ -106,13 +115,27 @@
          and t_w_firstyear.sale_type = 'w'
          and t_s_secyear.sale_type = 's'
          and t_w_secyear.sale_type = 'w'
+<<<<<<< HEAD
+         and t_s_firstyear.dyear = 2001
+         and t_s_secyear.dyear = 2001+1
+         and t_w_firstyear.dyear = 2001
+         and t_w_secyear.dyear = 2001+1
+=======
          and t_s_firstyear.dyear = [YEAR]
          and t_s_secyear.dyear = [YEAR]+1
          and t_w_firstyear.dyear = [YEAR]
          and t_w_secyear.dyear = [YEAR]+1
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
          and t_s_firstyear.year_total > 0
          and t_w_firstyear.year_total > 0
          and case when t_w_firstyear.year_total > 0 then t_w_secyear.year_total / t_w_firstyear.year_total else null end
              > case when t_s_firstyear.year_total > 0 then t_s_secyear.year_total / t_s_firstyear.year_total else null end
+<<<<<<< HEAD
+ order by t_s_secyear.customer_preferred_cust_flag
+ ) where rownum <= 100;
+
+
+=======
  order by [SELECTCONE]
 [_LIMITC];
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4

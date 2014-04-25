@@ -33,7 +33,10 @@
 -- Contributors:
 -- 
  define YEAR=random(1998,2001,uniform);
+<<<<<<< HEAD
  define DMS = random(1176,1212,uniform); -- Qualification: 1212
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
  define _LIMIT=100;
  
  with wss as 
@@ -52,7 +55,11 @@
  )
  [_LIMITA] select [_LIMITB] s_store_name1,s_store_id1,d_week_seq1
        ,sun_sales1/sun_sales2,mon_sales1/mon_sales2
+<<<<<<< HEAD
        ,tue_sales1/tue_sales2,wed_sales1/wed_sales2,thu_sales1/thu_sales2
+=======
+       ,tue_sales1/tue_sales1,wed_sales1/wed_sales2,thu_sales1/thu_sales2
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
        ,fri_sales1/fri_sales2,sat_sales1/sat_sales2
  from
  (select s_store_name s_store_name1,wss.d_week_seq d_week_seq1

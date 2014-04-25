@@ -33,7 +33,10 @@
 -- Contributors:
 -- 
 define YEAR= random(1998, 2002, uniform);
+<<<<<<< HEAD
 define DMS = random(1176,1224, uniform); -- Qualification: 1176
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
 
 select count(*) 
 from ((select distinct c_last_name, c_first_name, d_date

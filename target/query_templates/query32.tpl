@@ -33,7 +33,10 @@
 -- Contributors:
 -- 
 
+<<<<<<< HEAD
 define IMID  = random(1,1000,uniform); -- 255 for qualification
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
 define YEAR  = random(1998,2002,uniform);
 define CSDATE = date([YEAR]+"-01-01",[YEAR]+"-04-01",sales);
 define _LIMIT=100;

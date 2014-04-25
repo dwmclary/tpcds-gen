@@ -40,11 +40,7 @@
  select c_customer_id customer_id
        ,c_first_name customer_first_name
        ,c_last_name customer_last_name
-<<<<<<< HEAD
-       ,c_preferred_cust_flag customer_preferred_cust_flag
-=======
        ,c_preferred_cust_flag
->>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
        ,c_birth_country customer_birth_country
        ,c_login customer_login
        ,c_email_address customer_email_address
@@ -69,11 +65,7 @@
  select c_customer_id customer_id
        ,c_first_name customer_first_name
        ,c_last_name customer_last_name
-<<<<<<< HEAD
-       ,c_preferred_cust_flag customer_preferred_cust_flag
-=======
        ,c_preferred_cust_flag
->>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
        ,c_birth_country customer_birth_country
        ,c_login customer_login
        ,c_email_address customer_email_address

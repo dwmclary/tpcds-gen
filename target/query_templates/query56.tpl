@@ -35,7 +35,10 @@
  define YEAR= random(1998,2002, uniform);
  define MONTH = random(1,7,uniform);
  define GMT = dist(fips_county, 6, 1);
+<<<<<<< HEAD
  define COLOR=ulist(dist(colors,1,1),3); -- i_color
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
  define _LIMIT=100;
 
  with ss as (

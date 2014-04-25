@@ -33,7 +33,10 @@
 -- Contributors:
 -- 
 define COUNTY = random(1, rowcount("active_counties", "store"), uniform);
+<<<<<<< HEAD
 define STATE = distmember(fips_county, [COUNTY], 3); -- qualification params ca
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
 define YEAR = random(1998, 2002, uniform);
 define AGG_FIELD = text({"SR_RETURN_AMT",1},{"SR_FEE",1},{"SR_REFUNDED_CASH",1},{"SR_RETURN_AMT_INC_TAX",1},{"SR_REVERSED_CHARGE",1},{"SR_STORE_CREDIT",1},{"SR_RETURN_TAX",1});
 define _LIMIT=100;

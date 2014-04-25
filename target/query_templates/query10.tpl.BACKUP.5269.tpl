@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+select * from (select  
+=======
 --
 -- Legal Notice 
 -- 
@@ -32,68 +36,92 @@
 -- 
 -- Contributors:
 -- 
- define YEAR=random(1999,2002,uniform);
-<<<<<<< HEAD
- define AGGONE= text({"sum",1},{"min",1},{"max",1},{"avg",1},{"stddev_samp",1}); -- for qualification min
- define AGGTWO= text({"sum",1},{"min",1},{"max",1},{"avg",1},{"stddev_samp",1}); -- for qualification max
- define AGGTHREE= text({"sum",1},{"min",1},{"max",1},{"avg",1},{"stddev_samp",1}); -- for qualification avg
-=======
+ define COUNTY = ulist(dist(fips_county,2,1),10);
+ define MONTH = random(1,4,uniform);
+ define YEAR = random(1999,2002,uniform);
+ define _LIMIT=100; 
+
+ [_LIMITA] select [_LIMITB] 
 >>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
- define _LIMIT=100;
- 
- [_LIMITA] select [_LIMITB]  
-  ca_state,
   cd_gender,
   cd_marital_status,
+  cd_education_status,
   count(*) cnt1,
-  [AGGONE](cd_dep_count),
-  [AGGTWO](cd_dep_count),
-  [AGGTHREE](cd_dep_count),
-  cd_dep_employed_count,
+  cd_purchase_estimate,
   count(*) cnt2,
-  [AGGONE](cd_dep_employed_count),
-  [AGGTWO](cd_dep_employed_count),
-  [AGGTHREE](cd_dep_employed_count),
-  cd_dep_college_count,
+  cd_credit_rating,
   count(*) cnt3,
-  [AGGONE](cd_dep_college_count),
-  [AGGTWO](cd_dep_college_count),
-  [AGGTHREE](cd_dep_college_count)
+  cd_dep_count,
+  count(*) cnt4,
+  cd_dep_employed_count,
+  count(*) cnt5,
+  cd_dep_college_count,
+  count(*) cnt6
  from
   customer c,customer_address ca,customer_demographics
  where
   c.c_current_addr_sk = ca.ca_address_sk and
+<<<<<<< HEAD
+  ca_county in ('Walker County','Richland County','Gaines County','Douglas County','Dona Ana County') and
+=======
+  ca_county in ('[COUNTY.1]','[COUNTY.2]','[COUNTY.3]','[COUNTY.4]','[COUNTY.5]') and
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
   cd_demo_sk = c.c_current_cdemo_sk and 
   exists (select *
           from store_sales,date_dim
           where c.c_customer_sk = ss_customer_sk and
                 ss_sold_date_sk = d_date_sk and
+<<<<<<< HEAD
+                d_year = 2002 and
+                d_moy between 4 and 4+3) and
+=======
                 d_year = [YEAR] and
-                d_qoy < 4) and
+                d_moy between [MONTH] and [MONTH]+3) and
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
    (exists (select *
             from web_sales,date_dim
             where c.c_customer_sk = ws_bill_customer_sk and
                   ws_sold_date_sk = d_date_sk and
+<<<<<<< HEAD
+                  d_year = 2002 and
+                  d_moy between 4 ANd 4+3) or 
+=======
                   d_year = [YEAR] and
-                  d_qoy < 4) or 
+                  d_moy between [MONTH] ANd [MONTH]+3) or 
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
     exists (select * 
             from catalog_sales,date_dim
             where c.c_customer_sk = cs_ship_customer_sk and
                   cs_sold_date_sk = d_date_sk and
+<<<<<<< HEAD
+                  d_year = 2002 and
+                  d_moy between 4 and 4+3))
+=======
                   d_year = [YEAR] and
-                  d_qoy < 4))
- group by ca_state,
-          cd_gender,
+                  d_moy between [MONTH] and [MONTH]+3))
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
+ group by cd_gender,
           cd_marital_status,
+          cd_education_status,
+          cd_purchase_estimate,
+          cd_credit_rating,
           cd_dep_count,
           cd_dep_employed_count,
           cd_dep_college_count
- order by ca_state,
-          cd_gender,
+ order by cd_gender,
           cd_marital_status,
+          cd_education_status,
+          cd_purchase_estimate,
+          cd_credit_rating,
           cd_dep_count,
           cd_dep_employed_count,
           cd_dep_college_count
- [_LIMITC];
+<<<<<<< HEAD
+ ) where rownum <= 100;
+
+=======
+[_LIMITC];
  
+ 
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
 

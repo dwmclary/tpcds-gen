@@ -35,7 +35,10 @@
  define COLOR=ulist(dist(colors,1,1),16); 
  define UNIT=ulist(dist(units,1,1),16); 
  define SIZE=ulist(dist(sizes,1,1),6); 
+<<<<<<< HEAD
  define MANUFACT= random(667,1000,uniform); -- for qualification 698 
+=======
+>>>>>>> 35162374e0fa8bb80a57cee3a8283f3ff24722c4
  define _LIMIT=100;
  
  [_LIMITA] select [_LIMITB] distinct(i_product_name)
