@@ -1,0 +1,1 @@
+./dsqgen -verbose -input ../query_templates/query1.tpl  -directory ../query_templates -dialect oracle -scale 2 -output_dir ../generated_queries

@@ -1,0 +1,7 @@
+#! /bin/awk
+
+BEGIN {FS="|"}
+{
+#main loop -- catalog_returns has 28 pipes
+    if (NF == 25){print $0}
+}

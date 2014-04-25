@@ -1,0 +1,5 @@
+#! /bin/awk
+
+BEGIN { FS="|" }
+{
+    IF (NF=24)

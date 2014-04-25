@@ -1,0 +1,6 @@
+store_sales: 30
+store_returns: 21
+web_sales: 35
+web_returns: 25
+catalog_sales: 35
+catalog_returns: 28
