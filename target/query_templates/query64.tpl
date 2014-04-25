@@ -1,3 +1,41 @@
+--
+-- Legal Notice 
+-- 
+-- This document and associated source code (the "Work") is a part of a 
+-- benchmark specification maintained by the TPC. 
+-- 
+-- The TPC reserves all right, title, and interest to the Work as provided 
+-- under U.S. and international laws, including without limitation all patent 
+-- and trademark rights therein. 
+-- 
+-- No Warranty 
+-- 
+-- 1.1 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE INFORMATION 
+--     CONTAINED HEREIN IS PROVIDED "AS IS" AND WITH ALL FAULTS, AND THE 
+--     AUTHORS AND DEVELOPERS OF THE WORK HEREBY DISCLAIM ALL OTHER 
+--     WARRANTIES AND CONDITIONS, EITHER EXPRESS, IMPLIED OR STATUTORY, 
+--     INCLUDING, BUT NOT LIMITED TO, ANY (IF ANY) IMPLIED WARRANTIES, 
+--     DUTIES OR CONDITIONS OF MERCHANTABILITY, OF FITNESS FOR A PARTICULAR 
+--     PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OF 
+--     WORKMANLIKE EFFORT, OF LACK OF VIRUSES, AND OF LACK OF NEGLIGENCE. 
+--     ALSO, THERE IS NO WARRANTY OR CONDITION OF TITLE, QUIET ENJOYMENT, 
+--     QUIET POSSESSION, CORRESPONDENCE TO DESCRIPTION OR NON-INFRINGEMENT 
+--     WITH REGARD TO THE WORK. 
+-- 1.2 IN NO EVENT WILL ANY AUTHOR OR DEVELOPER OF THE WORK BE LIABLE TO 
+--     ANY OTHER PARTY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO THE 
+--     COST OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS 
+--     OF USE, LOSS OF DATA, OR ANY INCIDENTAL, CONSEQUENTIAL, DIRECT, 
+--     INDIRECT, OR SPECIAL DAMAGES WHETHER UNDER CONTRACT, TORT, WARRANTY,
+--     OR OTHERWISE, ARISING IN ANY WAY OUT OF THIS OR ANY OTHER AGREEMENT 
+--     RELATING TO THE WORK, WHETHER OR NOT SUCH AUTHOR OR DEVELOPER HAD 
+--     ADVANCE NOTICE OF THE POSSIBILITY OF SUCH DAMAGES. 
+-- 
+-- Contributors:
+-- 
+
+define COLOR=ulist(dist(colors,1,1),6);
+define PRICE=random(0,85,uniform);
+define YEAR = random(1999, 2001, uniform);
 
 with cs_ui as
  (select cs_item_sk
@@ -65,9 +103,9 @@ cross_sales as
          hd1.hd_income_band_sk = ib1.ib_income_band_sk and
          hd2.hd_income_band_sk = ib2.ib_income_band_sk and
          cd1.cd_marital_status <> cd2.cd_marital_status and
-         i_color in ('maroon','burnished','dim','steel','navajo','chocolate') and
-         i_current_price between 35 and 35 + 10 and
-         i_current_price between 35 + 1 and 35 + 15
+         i_color in ('[COLOR.1]','[COLOR.2]','[COLOR.3]','[COLOR.4]','[COLOR.5]','[COLOR.6]') and
+         i_current_price between [PRICE] and [PRICE] + 10 and
+         i_current_price between [PRICE] + 1 and [PRICE] + 15
 group by i_product_name
        ,i_item_sk
        ,s_store_name
@@ -107,13 +145,12 @@ select cs1.product_name
      ,cs2.cnt
 from cross_sales cs1,cross_sales cs2
 where cs1.item_sk=cs2.item_sk and
-     cs1.syear = 2000 and
-     cs2.syear = 2000 + 1 and
+     cs1.syear = [YEAR] and
+     cs2.syear = [YEAR] + 1 and
      cs2.cnt <= cs1.cnt and
      cs1.store_name = cs2.store_name and
      cs1.store_zip = cs2.store_zip
 order by cs1.product_name
        ,cs1.store_name
        ,cs2.cnt;
-
 

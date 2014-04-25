@@ -1,5 +1,42 @@
-
-select * from (select  
+--
+-- Legal Notice 
+-- 
+-- This document and associated source code (the "Work") is a part of a 
+-- benchmark specification maintained by the TPC. 
+-- 
+-- The TPC reserves all right, title, and interest to the Work as provided 
+-- under U.S. and international laws, including without limitation all patent 
+-- and trademark rights therein. 
+-- 
+-- No Warranty 
+-- 
+-- 1.1 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE INFORMATION 
+--     CONTAINED HEREIN IS PROVIDED "AS IS" AND WITH ALL FAULTS, AND THE 
+--     AUTHORS AND DEVELOPERS OF THE WORK HEREBY DISCLAIM ALL OTHER 
+--     WARRANTIES AND CONDITIONS, EITHER EXPRESS, IMPLIED OR STATUTORY, 
+--     INCLUDING, BUT NOT LIMITED TO, ANY (IF ANY) IMPLIED WARRANTIES, 
+--     DUTIES OR CONDITIONS OF MERCHANTABILITY, OF FITNESS FOR A PARTICULAR 
+--     PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OF 
+--     WORKMANLIKE EFFORT, OF LACK OF VIRUSES, AND OF LACK OF NEGLIGENCE. 
+--     ALSO, THERE IS NO WARRANTY OR CONDITION OF TITLE, QUIET ENJOYMENT, 
+--     QUIET POSSESSION, CORRESPONDENCE TO DESCRIPTION OR NON-INFRINGEMENT 
+--     WITH REGARD TO THE WORK. 
+-- 1.2 IN NO EVENT WILL ANY AUTHOR OR DEVELOPER OF THE WORK BE LIABLE TO 
+--     ANY OTHER PARTY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO THE 
+--     COST OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS 
+--     OF USE, LOSS OF DATA, OR ANY INCIDENTAL, CONSEQUENTIAL, DIRECT, 
+--     INDIRECT, OR SPECIAL DAMAGES WHETHER UNDER CONTRACT, TORT, WARRANTY,
+--     OR OTHERWISE, ARISING IN ANY WAY OUT OF THIS OR ANY OTHER AGREEMENT 
+--     RELATING TO THE WORK, WHETHER OR NOT SUCH AUTHOR OR DEVELOPER HAD 
+--     ADVANCE NOTICE OF THE POSSIBILITY OF SUCH DAMAGES. 
+-- 
+-- Contributors:
+-- 
+ define YEAR=random(1998,2002,uniform);
+ define MONTH=random(11,12,uniform);
+ define _LIMIT=100;
+ 
+ [_LIMITA] select [_LIMITB] 
  'web' as channel
  ,web.item
  ,web.return_ratio
@@ -29,8 +66,8 @@ select * from (select
                          and ws.ws_net_paid > 0
                          and ws.ws_quantity > 0
                          and ws_sold_date_sk = d_date_sk
-                         and d_year = 2000
-                         and d_moy = 12
+                         and d_year = [YEAR]
+                         and d_moy = [MONTH]
  		group by ws.ws_item_sk
  	) in_web
  ) web
@@ -72,8 +109,8 @@ select * from (select
                          and cs.cs_net_paid > 0
                          and cs.cs_quantity > 0
                          and cs_sold_date_sk = d_date_sk
-                         and d_year = 2000
-                         and d_moy = 12
+                         and d_year = [YEAR]
+                         and d_moy = [MONTH]
                  group by cs.cs_item_sk
  	) in_cat
  ) catalog
@@ -111,8 +148,8 @@ select * from (select
                          and sts.ss_net_paid > 0 
                          and sts.ss_quantity > 0
                          and ss_sold_date_sk = d_date_sk
-                         and d_year = 2000
-                         and d_moy = 12
+                         and d_year = [YEAR]
+                         and d_moy = [MONTH]
  		group by sts.ss_item_sk
  	) in_store
  ) store
@@ -122,6 +159,6 @@ select * from (select
  store.currency_rank <= 10
  )
  order by 1,4,5
-  ) where rownum <= 100;
-
+ [_LIMITC];
+ 
 

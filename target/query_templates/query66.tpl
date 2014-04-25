@@ -1,5 +1,47 @@
-
-select * from (select   
+--
+-- Legal Notice 
+-- 
+-- This document and associated source code (the "Work") is a part of a 
+-- benchmark specification maintained by the TPC. 
+-- 
+-- The TPC reserves all right, title, and interest to the Work as provided 
+-- under U.S. and international laws, including without limitation all patent 
+-- and trademark rights therein. 
+-- 
+-- No Warranty 
+-- 
+-- 1.1 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE INFORMATION 
+--     CONTAINED HEREIN IS PROVIDED "AS IS" AND WITH ALL FAULTS, AND THE 
+--     AUTHORS AND DEVELOPERS OF THE WORK HEREBY DISCLAIM ALL OTHER 
+--     WARRANTIES AND CONDITIONS, EITHER EXPRESS, IMPLIED OR STATUTORY, 
+--     INCLUDING, BUT NOT LIMITED TO, ANY (IF ANY) IMPLIED WARRANTIES, 
+--     DUTIES OR CONDITIONS OF MERCHANTABILITY, OF FITNESS FOR A PARTICULAR 
+--     PURPOSE, OF ACCURACY OR COMPLETENESS OF RESPONSES, OF RESULTS, OF 
+--     WORKMANLIKE EFFORT, OF LACK OF VIRUSES, AND OF LACK OF NEGLIGENCE. 
+--     ALSO, THERE IS NO WARRANTY OR CONDITION OF TITLE, QUIET ENJOYMENT, 
+--     QUIET POSSESSION, CORRESPONDENCE TO DESCRIPTION OR NON-INFRINGEMENT 
+--     WITH REGARD TO THE WORK. 
+-- 1.2 IN NO EVENT WILL ANY AUTHOR OR DEVELOPER OF THE WORK BE LIABLE TO 
+--     ANY OTHER PARTY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO THE 
+--     COST OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS 
+--     OF USE, LOSS OF DATA, OR ANY INCIDENTAL, CONSEQUENTIAL, DIRECT, 
+--     INDIRECT, OR SPECIAL DAMAGES WHETHER UNDER CONTRACT, TORT, WARRANTY,
+--     OR OTHERWISE, ARISING IN ANY WAY OUT OF THIS OR ANY OTHER AGREEMENT 
+--     RELATING TO THE WORK, WHETHER OR NOT SUCH AUTHOR OR DEVELOPER HAD 
+--     ADVANCE NOTICE OF THE POSSIBILITY OF SUCH DAMAGES. 
+-- 
+-- Contributors:
+-- 
+  define YEAR= random(1998, 2002, uniform);
+ define TIMEONE= random(1, 57597, uniform);
+ define SMC = ulist(dist(ship_mode_carrier, 1, 1),2);
+ define NETONE = text({"ws_net_paid",1},{"ws_net_paid_inc_tax",1},{"ws_net_paid_inc_ship",1},{"ws_net_paid_inc_ship_tax",1},{"ws_net_profit",1});
+ define NETTWO = text({"cs_net_paid",1},{"cs_net_paid_inc_tax",1},{"cs_net_paid_inc_ship",1},{"cs_net_paid_inc_ship_tax",1},{"cs_net_profit",1});
+ define SALESONE = text({"ws_sales_price",1},{"ws_ext_sales_price",1},{"ws_ext_list_price",1});
+ define SALESTWO = text({"cs_sales_price",1},{"cs_ext_sales_price",1},{"cs_ext_list_price",1});
+ define _LIMIT=100; 
+ 
+ [_LIMITA] select [_LIMITB]  
          w_warehouse_name
  	,w_warehouse_sq_ft
  	,w_city
@@ -52,56 +94,56 @@ select * from (select
  	,w_county
  	,w_state
  	,w_country
- 	,'DIAMOND' || ',' || 'AIRBORNE' as ship_carriers
+ 	,'[SMC.1]' || ',' || '[SMC.2]' as ship_carriers
        ,d_year as year
  	,sum(case when d_moy = 1 
- 		then ws_sales_price* ws_quantity else 0 end) as jan_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as jan_sales
  	,sum(case when d_moy = 2 
- 		then ws_sales_price* ws_quantity else 0 end) as feb_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as feb_sales
  	,sum(case when d_moy = 3 
- 		then ws_sales_price* ws_quantity else 0 end) as mar_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as mar_sales
  	,sum(case when d_moy = 4 
- 		then ws_sales_price* ws_quantity else 0 end) as apr_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as apr_sales
  	,sum(case when d_moy = 5 
- 		then ws_sales_price* ws_quantity else 0 end) as may_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as may_sales
  	,sum(case when d_moy = 6 
- 		then ws_sales_price* ws_quantity else 0 end) as jun_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as jun_sales
  	,sum(case when d_moy = 7 
- 		then ws_sales_price* ws_quantity else 0 end) as jul_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as jul_sales
  	,sum(case when d_moy = 8 
- 		then ws_sales_price* ws_quantity else 0 end) as aug_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as aug_sales
  	,sum(case when d_moy = 9 
- 		then ws_sales_price* ws_quantity else 0 end) as sep_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as sep_sales
  	,sum(case when d_moy = 10 
- 		then ws_sales_price* ws_quantity else 0 end) as oct_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as oct_sales
  	,sum(case when d_moy = 11
- 		then ws_sales_price* ws_quantity else 0 end) as nov_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as nov_sales
  	,sum(case when d_moy = 12
- 		then ws_sales_price* ws_quantity else 0 end) as dec_sales
+ 		then [SALESONE]* ws_quantity else 0 end) as dec_sales
  	,sum(case when d_moy = 1 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as jan_net
+ 		then [NETONE] * ws_quantity else 0 end) as jan_net
  	,sum(case when d_moy = 2
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as feb_net
+ 		then [NETONE] * ws_quantity else 0 end) as feb_net
  	,sum(case when d_moy = 3 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as mar_net
+ 		then [NETONE] * ws_quantity else 0 end) as mar_net
  	,sum(case when d_moy = 4 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as apr_net
+ 		then [NETONE] * ws_quantity else 0 end) as apr_net
  	,sum(case when d_moy = 5 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as may_net
+ 		then [NETONE] * ws_quantity else 0 end) as may_net
  	,sum(case when d_moy = 6 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as jun_net
+ 		then [NETONE] * ws_quantity else 0 end) as jun_net
  	,sum(case when d_moy = 7 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as jul_net
+ 		then [NETONE] * ws_quantity else 0 end) as jul_net
  	,sum(case when d_moy = 8 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as aug_net
+ 		then [NETONE] * ws_quantity else 0 end) as aug_net
  	,sum(case when d_moy = 9 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as sep_net
+ 		then [NETONE] * ws_quantity else 0 end) as sep_net
  	,sum(case when d_moy = 10 
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as oct_net
+ 		then [NETONE] * ws_quantity else 0 end) as oct_net
  	,sum(case when d_moy = 11
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as nov_net
+ 		then [NETONE] * ws_quantity else 0 end) as nov_net
  	,sum(case when d_moy = 12
- 		then ws_net_paid_inc_tax * ws_quantity else 0 end) as dec_net
+ 		then [NETONE] * ws_quantity else 0 end) as dec_net
      from
           web_sales
          ,warehouse
@@ -113,9 +155,9 @@ select * from (select
         and ws_sold_date_sk = d_date_sk
         and ws_sold_time_sk = t_time_sk
  	and ws_ship_mode_sk = sm_ship_mode_sk
-        and d_year = 2002
- 	and t_time between 49530 and 49530+28800 
- 	and sm_carrier in ('DIAMOND','AIRBORNE')
+        and d_year = [YEAR]
+ 	and t_time between [TIMEONE] and [TIMEONE]+28800 
+ 	and sm_carrier in ('[SMC.1]','[SMC.2]')
      group by 
         w_warehouse_name
  	,w_warehouse_sq_ft
@@ -133,56 +175,56 @@ select * from (select
  	,w_county
  	,w_state
  	,w_country
- 	,'DIAMOND' || ',' || 'AIRBORNE' as ship_carriers
+ 	,'[SMC.1]' || ',' || '[SMC.2]' as ship_carriers
        ,d_year as year
  	,sum(case when d_moy = 1 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as jan_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as jan_sales
  	,sum(case when d_moy = 2 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as feb_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as feb_sales
  	,sum(case when d_moy = 3 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as mar_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as mar_sales
  	,sum(case when d_moy = 4 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as apr_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as apr_sales
  	,sum(case when d_moy = 5 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as may_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as may_sales
  	,sum(case when d_moy = 6 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as jun_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as jun_sales
  	,sum(case when d_moy = 7 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as jul_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as jul_sales
  	,sum(case when d_moy = 8 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as aug_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as aug_sales
  	,sum(case when d_moy = 9 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as sep_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as sep_sales
  	,sum(case when d_moy = 10 
- 		then cs_ext_sales_price* cs_quantity else 0 end) as oct_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as oct_sales
  	,sum(case when d_moy = 11
- 		then cs_ext_sales_price* cs_quantity else 0 end) as nov_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as nov_sales
  	,sum(case when d_moy = 12
- 		then cs_ext_sales_price* cs_quantity else 0 end) as dec_sales
+ 		then [SALESTWO]* cs_quantity else 0 end) as dec_sales
  	,sum(case when d_moy = 1 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as jan_net
+ 		then [NETTWO] * cs_quantity else 0 end) as jan_net
  	,sum(case when d_moy = 2 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as feb_net
+ 		then [NETTWO] * cs_quantity else 0 end) as feb_net
  	,sum(case when d_moy = 3 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as mar_net
+ 		then [NETTWO] * cs_quantity else 0 end) as mar_net
  	,sum(case when d_moy = 4 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as apr_net
+ 		then [NETTWO] * cs_quantity else 0 end) as apr_net
  	,sum(case when d_moy = 5 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as may_net
+ 		then [NETTWO] * cs_quantity else 0 end) as may_net
  	,sum(case when d_moy = 6 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as jun_net
+ 		then [NETTWO] * cs_quantity else 0 end) as jun_net
  	,sum(case when d_moy = 7 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as jul_net
+ 		then [NETTWO] * cs_quantity else 0 end) as jul_net
  	,sum(case when d_moy = 8 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as aug_net
+ 		then [NETTWO] * cs_quantity else 0 end) as aug_net
  	,sum(case when d_moy = 9 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as sep_net
+ 		then [NETTWO] * cs_quantity else 0 end) as sep_net
  	,sum(case when d_moy = 10 
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as oct_net
+ 		then [NETTWo] * cs_quantity else 0 end) as oct_net
  	,sum(case when d_moy = 11
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as nov_net
+ 		then [NETTWO] * cs_quantity else 0 end) as nov_net
  	,sum(case when d_moy = 12
- 		then cs_net_paid_inc_ship_tax * cs_quantity else 0 end) as dec_net
+ 		then [NETTWO] * cs_quantity else 0 end) as dec_net
      from
           catalog_sales
          ,warehouse
@@ -194,9 +236,9 @@ select * from (select
         and cs_sold_date_sk = d_date_sk
         and cs_sold_time_sk = t_time_sk
  	and cs_ship_mode_sk = sm_ship_mode_sk
-        and d_year = 2002
- 	and t_time between 49530 AND 49530+28800 
- 	and sm_carrier in ('DIAMOND','AIRBORNE')
+        and d_year = [YEAR]
+ 	and t_time between [TIMEONE] AND [TIMEONE]+28800 
+ 	and sm_carrier in ('[SMC.1]','[SMC.2]')
      group by 
         w_warehouse_name
  	,w_warehouse_sq_ft
@@ -217,6 +259,5 @@ select * from (select
  	,ship_carriers
        ,year
  order by w_warehouse_name
-  ) where rownum <= 100;
-
+ [_LIMITC];
 
